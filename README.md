@@ -3,157 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu Cherry's</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<title>Cherry’s Fast-Food</title>
 <style>
-    body {
-        font-family: 'Roboto', sans-serif;
-        background-color: #fff5f7;
-        margin: 0;
-        padding: 0;
-    }
-    header {
-        text-align: center;
-        background-color: #ff4d4d;
-        color: white;
-        padding: 25px;
-        font-size: 2em;
-        font-weight: bold;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .menu-category {
-        background-color: #ff9999;
-        margin: 10px;
-        padding: 18px;
-        border-radius: 12px;
-        text-align: center;
-        cursor: pointer;
-        font-size: 1.3em;
-        font-weight: bold;
-        transition: background 0.3s;
-    }
-    .menu-category:hover {
-        background-color: #ff6666;
-    }
-    .menu-items {
-        display: none;
-        margin: 10px;
-        padding: 15px 20px;
-        background-color: #ffe6e6;
-        border-radius: 12px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .menu-items ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .menu-items li {
-        padding: 8px 0;
-        font-size: 1em;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .menu-items img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        border-radius: 8px;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fffaf8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: linear-gradient(90deg, #ff0055, #ff7b00);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+h1 {
+  margin: 0;
+  font-size: 2em;
+}
+section {
+  max-width: 700px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+button {
+  width: 100%;
+  background: #ff0055;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #ff3366;
+}
+.menu-items {
+  display: none;
+  padding: 15px;
+}
+.menu-items p {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #ddd;
+}
+footer {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 0.9em;
+}
 </style>
+<script>
+function toggleMenu(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
 </head>
 <body>
 
-<header>🍔 Menu Cherry's 🍕</header>
+<header>
+  <h1>🍒 Cherry’s Fast-Food 🍒</h1>
+  <p>Découvrez nos délicieux menus !</p>
+</header>
 
-<div class="menu-category" onclick="toggleMenu('fastfood')">● Fast-food</div>
-<div class="menu-items" id="fastfood">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Gyros au poulet : 3000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Gyros au bœuf : 2000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Gyros cherry's : 4500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Sandwich viande : 1000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Sandwich poulet : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Chawarma poulet : 2000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Chawarma viande : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Hamburger : 2500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Chicken burgers : 3000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Cherry's burgers : 4000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> KFC : 4000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Plat de Nems 4 pièces : 2500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Tacos viande : 2500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Tacos poulet : 3500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Tacos cherry's : 4500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Big Sandwich : 10000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Big burgers : 12500f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('fastfood')">🍔 Fast-food</button>
+  <div id="fastfood" class="menu-items">
+    <p>Gyros au poulet <span>3000f</span></p>
+    <p>Gyros au bœuf <span>2000f</span></p>
+    <p>Gyros Cherry’s <span>4500f</span></p>
+    <p>Sandwich viande <span>1000f</span></p>
+    <p>Sandwich poulet <span>1500f</span></p>
+    <p>Chawarma poulet <span>2000f</span></p>
+    <p>Chawarma viande <span>1500f</span></p>
+    <p>Hamburger <span>2500f</span></p>
+    <p>Chicken burger <span>3000f</span></p>
+    <p>Cherry’s burger <span>4000f</span></p>
+    <p>KFC <span>4000f</span></p>
+    <p>Plat de Nems (4 pièces) <span>2500f</span></p>
+    <p>Tacos viande <span>2500f</span></p>
+    <p>Tacos poulet <span>3500f</span></p>
+    <p>Tacos Cherry’s <span>4500f</span></p>
+    <p>Big Sandwich <span>10000f</span></p>
+    <p>Big Burger <span>12500f</span></p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('pizzas')">● Pizzas</div>
-<div class="menu-items" id="pizzas">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Pizza cherry's : 7000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Pizza marguarita : 5000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Pizza orientale : 6000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Pizza végétarien : 6000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Pizza Kiss : 6500f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('pizzas')">🍕 Les Pizzas</button>
+  <div id="pizzas" class="menu-items">
+    <p>Pizza Cherry’s <span>7000f</span></p>
+    <p>Pizza Margharita <span>5000f</span></p>
+    <p>Pizza Orientale <span>6000f</span></p>
+    <p>Pizza Végétarienne <span>6000f</span></p>
+    <p>Pizza Kiss <span>6500f</span></p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('grillades')">● Nos Grillade</div>
-<div class="menu-items" id="grillades">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Brochette de bœuf : 6000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Brochette de poulet : 6000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Brochette de capitaine : 7000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> 1/2 poulet : 6000f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('grillades')">🔥 Nos Grillades</button>
+  <div id="grillades" class="menu-items">
+    <p>Brochette de bœuf <span>6000f</span></p>
+    <p>Brochette de poulet <span>6000f</span></p>
+    <p>Brochette de capitaine <span>7000f</span></p>
+    <p>1/2 poulet <span>6000f</span></p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('mixtes')">● Les mixtes à partager</div>
-<div class="menu-items" id="mixtes">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Mixte fast-food : 15000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Mixte grille : 15000f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('mixte')">🍽️ Les mixtes à partager</button>
+  <div id="mixte" class="menu-items">
+    <p>Mixte fast-food <span>15000f</span></p>
+    <p>Mixte grillade (bœuf, capitaine, 1/2 poulet)</p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('cafe')">● Café</div>
-<div class="menu-items" id="cafe">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Nespresso : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Cappuccino : 2000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Frappucino glacé : 2500f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('cafe')">☕ Café</button>
+  <div id="cafe" class="menu-items">
+    <p>Nespresso <span>1500f</span></p>
+    <p>Cappuccino <span>2000f</span></p>
+    <p>Frappuccino glacé <span>2500f</span></p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('the')">● Thé</div>
-<div class="menu-items" id="the">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Thé mixte : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Thé Cherry's : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Thé malien : 1000f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('the')">🍵 Thé</button>
+  <div id="the" class="menu-items">
+    <p>Thé mixte <span>1500f</span></p>
+    <p>Thé Cherry’s <span>1500f</span></p>
+    <p>Thé malien <span>1000f</span></p>
+  </div>
+</section>
 
-<div class="menu-category" onclick="toggleMenu('mocktail')">● Mocktail</div>
-<div class="menu-items" id="mocktail">
-    <ul>
-        <li><img src="https://via.placeholder.com/60" alt=""> Ener cherry's : 1500f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Virginie colada : 4000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Virginie mojito : 4000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> Bora bora : 4000f</li>
-        <li><img src="https://via.placeholder.com/60" alt=""> San francisco : 4000f</li>
-    </ul>
-</div>
+<section>
+  <button onclick="toggleMenu('mocktails')">🍹 Mocktails</button>
+  <div id="mocktails" class="menu-items">
+    <p>Ener Cherry’s <span>1500f</span></p>
+    <p>Virgin Mojito <span>3000f</span></p>
+    <p>Virgin Colada <span>3000f</span></p>
+    <p>Bora Bora <span>3000f</span></p>
+    <p>San Francisco <span>3000f</span></p>
+    <p>Pina Colada <span>4000f</span></p>
+  </div>
+</section>
 
-<script>
-function toggleMenu(id) {
-    const el = document.getElementById(id);
-    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
-}
-</script>
+<footer>
+  📞 Contact : Cherry’s Fast-Food | Bamako  
+</footer>
 
 </body>
 </html>
