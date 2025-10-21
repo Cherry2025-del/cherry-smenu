@@ -1,163 +1,168 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cherry’s Fast-Food</title>
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fffaf8;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-header {
-  background: linear-gradient(90deg, #ff0055, #ff7b00);
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-h1 {
-  margin: 0;
-  font-size: 2em;
-}
-section {
-  max-width: 700px;
-  margin: 20px auto;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
-button {
-  width: 100%;
-  background: #ff0055;
-  color: white;
-  border: none;
-  padding: 15px;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: 0.3s;
-}
-button:hover {
-  background: #ff3366;
-}
-.menu-items {
-  display: none;
-  padding: 15px;
-}
-.menu-items p {
-  margin: 5px 0;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px dashed #ddd;
-}
-footer {
-  text-align: center;
-  margin: 30px 0;
-  font-size: 0.9em;
-}
-</style>
-<script>
-function toggleMenu(id) {
-  const el = document.getElementById(id);
-  el.style.display = el.style.display === "block" ? "none" : "block";
-}
-</script>
-</head>
-<body>
+import React, { useState } from "react";
 
-<header>
-  <h1>🍒 Cherry’s Fast-Food 🍒</h1>
-  <p>Découvrez nos délicieux menus !</p>
-</header>
+// Single-file React component (Tailwind CSS required in the project) // Replace /logo.png by your real logo path or import it.
 
-<section>
-  <button onclick="toggleMenu('fastfood')">🍔 Fast-food</button>
-  <div id="fastfood" class="menu-items">
-    <p>Gyros au poulet <span>3000f</span></p>
-    <p>Gyros au bœuf <span>2000f</span></p>
-    <p>Gyros Cherry’s <span>4500f</span></p>
-    <p>Sandwich viande <span>1000f</span></p>
-    <p>Sandwich poulet <span>1500f</span></p>
-    <p>Chawarma poulet <span>2000f</span></p>
-    <p>Chawarma viande <span>1500f</span></p>
-    <p>Hamburger <span>2500f</span></p>
-    <p>Chicken burger <span>3000f</span></p>
-    <p>Cherry’s burger <span>4000f</span></p>
-    <p>KFC <span>4000f</span></p>
-    <p>Plat de Nems (4 pièces) <span>2500f</span></p>
-    <p>Tacos viande <span>2500f</span></p>
-    <p>Tacos poulet <span>3500f</span></p>
-    <p>Tacos Cherry’s <span>4500f</span></p>
-    <p>Big Sandwich <span>10000f</span></p>
-    <p>Big Burger <span>12500f</span></p>
-  </div>
-</section>
+export default function MenuApp() { const WA_NUMBER = "22372910000"; // format pour wa.me (code pays + numéro)
 
-<section>
-  <button onclick="toggleMenu('pizzas')">🍕 Les Pizzas</button>
-  <div id="pizzas" class="menu-items">
-    <p>Pizza Cherry’s <span>7000f</span></p>
-    <p>Pizza Margharita <span>5000f</span></p>
-    <p>Pizza Orientale <span>6000f</span></p>
-    <p>Pizza Végétarienne <span>6000f</span></p>
-    <p>Pizza Kiss <span>6500f</span></p>
-  </div>
-</section>
+const data = { "Plat du jour": { days: { Lundi: [ { name: "Yassa poulet", price: "3000f" }, { name: "Fakoye", price: "3000f" }, ], Mardi: [ { name: "Maffé", price: "3000f" }, { name: "Thiep poisson ou poulet", price: "3000f" }, ], Mercredi: [ { name: "Saga saga", price: "3000f" }, { name: "Sauce tomate", price: "3000f" }, ], Jeudi: [ { name: "Woudjila", price: "3000f" }, { name: "Atieké", price: "3000f" }, ], Vendredi: [ { name: "Tôt", price: "3000f" }, { name: "Tiep poisson ou poulet", price: "3000f" }, ], }, }, "Nos Sandwichs": [ { name: "Sandwich viande haché", price: "1000f" }, { name: "Sandwich poulet", price: "2000f" }, { name: "Sandwich Thon", price: "2000f" }, { name: "Sandwich foie", price: "2000f" }, { name: "Sandwich rognon", price: "2000f" }, { name: "Sandwich Steak", price: "1500f" }, ], "Nos Shawarmas": [ { name: "Shawarma poulet", price: "2500f" }, { name: "Shawarma BŒUF", price: "2000f" }, ], "Nos Tacos": [ { name: "Tacos viande", price: "2500f" }, { name: "Le régal", price: "3500f" }, { name: "Tacos yummies", price: "4500f" }, ], "Nos Burgers": [ { name: "Burger smile", price: "3000f" }, { name: "Burger chicken Masala", price: "3000f" }, { name: "Burger yummies", price: "4000f" }, ], };
 
-<section>
-  <button onclick="toggleMenu('grillades')">🔥 Nos Grillades</button>
-  <div id="grillades" class="menu-items">
-    <p>Brochette de bœuf <span>6000f</span></p>
-    <p>Brochette de poulet <span>6000f</span></p>
-    <p>Brochette de capitaine <span>7000f</span></p>
-    <p>1/2 poulet <span>6000f</span></p>
-  </div>
-</section>
+const families = Object.keys(data); const [activeFamily, setActiveFamily] = useState(families[0]); const [activeDay, setActiveDay] = useState(null); const [selectedDish, setSelectedDish] = useState(null); const [orderMode, setOrderMode] = useState(null); // 'livraison' | 'surplace'
 
-<section>
-  <button onclick="toggleMenu('mixte')">🍽️ Les mixtes à partager</button>
-  <div id="mixte" class="menu-items">
-    <p>Mixte fast-food <span>15000f</span></p>
-    <p>Mixte grillade (bœuf, capitaine, 1/2 poulet)</p>
-  </div>
-</section>
+function openWhatsAppMessage(text) { const encoded = encodeURIComponent(text); const url = https://wa.me/${WA_NUMBER}?text=${encoded}; window.open(url, "_blank"); }
 
-<section>
-  <button onclick="toggleMenu('cafe')">☕ Café</button>
-  <div id="cafe" class="menu-items">
-    <p>Nespresso <span>1500f</span></p>
-    <p>Cappuccino <span>2000f</span></p>
-    <p>Frappuccino glacé <span>2500f</span></p>
-  </div>
-</section>
+function handleOrder(dishName, familyName) { setSelectedDish({ name: dishName, family: familyName }); setOrderMode(null); }
 
-<section>
-  <button onclick="toggleMenu('the')">🍵 Thé</button>
-  <div id="the" class="menu-items">
-    <p>Thé mixte <span>1500f</span></p>
-    <p>Thé Cherry’s <span>1500f</span></p>
-    <p>Thé malien <span>1000f</span></p>
-  </div>
-</section>
+function confirmOrder(mode) { // Construire message pré-rempli selon le mode const dish = selectedDish?.name ?? ""; const family = selectedDish?.family ?? ""; if (mode === "livraison") { const message = Bonjour 😊, je souhaite commander ${dish} (${family}). Je choisis la livraison. Je vais envoyer ma localisation via WhatsApp.; openWhatsAppMessage(message); } else { const message = Bonjour 😊, je souhaite commander ${dish} (${family}). Je vais manger sur place.; openWhatsAppMessage(message); } // reset setSelectedDish(null); setOrderMode(null); }
 
-<section>
-  <button onclick="toggleMenu('mocktails')">🍹 Mocktails</button>
-  <div id="mocktails" class="menu-items">
-    <p>Ener Cherry’s <span>1500f</span></p>
-    <p>Virgin Mojito <span>3000f</span></p>
-    <p>Virgin Colada <span>3000f</span></p>
-    <p>Bora Bora <span>3000f</span></p>
-    <p>San Francisco <span>3000f</span></p>
-    <p>Pina Colada <span>4000f</span></p>
-  </div>
-</section>
+return ( <div className="min-h-screen bg-white text-gray-800 p-4 sm:p-8"> <header className="max-w-4xl mx-auto flex items-center gap-4"> <img src="/logo.png" alt="Logo" className="w-24 h-24 object-contain" /> <div> <h1 className="text-2xl font-bold text-violet-600">Menu - CJDC</h1> <p className="text-sm text-gray-500">Commande directe par WhatsApp: +223 72 91 0000</p> </div> </header>
 
-<footer>
-  📞 Contact : Cherry’s Fast-Food | Bamako  
-</footer>
+<main className="max-w-4xl mx-auto mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+    {/* Left: Families list */}
+    <aside className="md:col-span-1">
+      <div className="bg-violet-50 border border-violet-100 rounded-xl p-4">
+        <h2 className="font-semibold mb-3 text-violet-700">Catégories</h2>
+        <ul className="space-y-2">
+          {families.map((f) => (
+            <li key={f}>
+              <button
+                className={`w-full text-left px-3 py-2 rounded-lg transition-shadow ${
+                  activeFamily === f ? "bg-violet-600 text-white" : "bg-white shadow-sm"
+                }`}
+                onClick={() => {
+                  setActiveFamily(f);
+                  setActiveDay(null);
+                }}
+              >
+                {f}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-</body>
-</html>
+      <div className="mt-4 text-sm text-gray-600">
+        <p>Cliquer sur un plat pour passer la commande via WhatsApp.</p>
+      </div>
+    </aside>
+
+    {/* Right: Content */}
+    <section className="md:col-span-2">
+      <div className="bg-white rounded-xl p-4 shadow-sm">
+        <h3 className="text-xl font-semibold mb-3 text-violet-700">{activeFamily}</h3>
+
+        {/* If Plat du jour -> show days */}
+        {activeFamily === "Plat du jour" ? (
+          <div>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {Object.keys(data[activeFamily].days).map((day) => (
+                <button
+                  key={day}
+                  onClick={() => setActiveDay(day)}
+                  className={`px-3 py-2 rounded-full border ${
+                    activeDay === day ? "bg-violet-600 text-white" : "bg-white"
+                  }`}
+                >
+                  {day}
+                </button>
+              ))}
+            </div>
+
+            {activeDay ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {data[activeFamily].days[activeDay].map((dish) => (
+                  <div key={dish.name} className="border rounded-lg p-3 flex justify-between items-center">
+                    <div>
+                      <div className="font-medium">{dish.name}</div>
+                      <div className="text-sm text-gray-500">{dish.price}</div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleOrder(dish.name, activeFamily)}
+                        className="px-3 py-1 rounded-lg bg-violet-600 text-white"
+                      >
+                        Passer la commande
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500">Sélectionnez un jour pour voir les plats.</p>
+            )}
+          </div>
+        ) : (
+          // Other families (array of dishes)
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {data[activeFamily].map((dish) => (
+              <div key={dish.name} className="border rounded-lg p-3 flex justify-between items-center">
+                <div>
+                  <div className="font-medium">{dish.name}</div>
+                  <div className="text-sm text-gray-500">{dish.price}</div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleOrder(dish.name, activeFamily)}
+                    className="px-3 py-1 rounded-lg bg-violet-600 text-white"
+                  >
+                    Passer la commande
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Illustrative images block (replace with your images) */}
+      <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <img src="https://source.unsplash.com/400x300/?sandwich" alt="sandwich" className="rounded-lg object-cover h-28 w-full" />
+        <img src="https://source.unsplash.com/400x300/?burger" alt="burger" className="rounded-lg object-cover h-28 w-full" />
+        <img src="https://source.unsplash.com/400x300?s=food" alt="food" className="rounded-lg object-cover h-28 w-full" />
+        <img src="https://source.unsplash.com/400x300/?shawarma" alt="shawarma" className="rounded-lg object-cover h-28 w-full" />
+      </div>
+    </section>
+  </main>
+
+  {/* Modal: Order */}
+  {selectedDish && (
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
+      <div className="bg-white rounded-xl max-w-md w-full p-4">
+        <h4 className="font-semibold text-lg">Commander: {selectedDish.name}</h4>
+        <p className="text-sm text-gray-600 mt-2">Choisissez si vous souhaitez être livré ou manger sur place.</p>
+
+        <div className="flex gap-2 mt-4">
+          <button
+            onClick={() => confirmOrder("livraison")}
+            className="flex-1 px-3 py-2 rounded-lg bg-violet-600 text-white"
+          >
+            Livraison
+          </button>
+          <button
+            onClick={() => confirmOrder("surplace")}
+            className="flex-1 px-3 py-2 rounded-lg border"
+          >
+            Sur place
+          </button>
+        </div>
+
+        <div className="mt-3 text-xs text-gray-500">
+          Si vous choisissez livraison, après l'ouverture de WhatsApp envoyez votre position (bouton pièce jointe &gt; Localisation) au numéro +223 72 91 0000.
+        </div>
+
+        <button
+          onClick={() => setSelectedDish(null)}
+          className="mt-4 text-sm text-gray-600 underline"
+        >
+          Annuler
+        </button>
+      </div>
+    </div>
+  )}
+
+  <footer className="max-w-4xl mx-auto mt-8 text-center text-gray-500 text-sm">
+    <p>© CJDC - Menu interactif. Remplacez /logo.png par votre logo réel dans le dossier public.</p>
+  </footer>
+</div>
+
+); }
+
